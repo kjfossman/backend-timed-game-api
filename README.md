@@ -1,5 +1,5 @@
 # README
-
+API for Timed Game 
 
 * Ruby version
 
