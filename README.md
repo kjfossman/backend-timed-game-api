@@ -1,7 +1,7 @@
 # README
 API for Timed Game 
 
-* Ruby version
+* Ruby version 2.6.1
 
 * System dependencies
 
