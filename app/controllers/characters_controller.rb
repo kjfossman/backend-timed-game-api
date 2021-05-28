@@ -4,7 +4,7 @@ class CharactersController < ApplicationController
   # GET /characters
   def index
     @characters = Character.all
-
+    
     render json: @characters
   end
 
@@ -18,7 +18,7 @@ class CharactersController < ApplicationController
     @character = Character.new(character_params)
 
     if @character.save
-      render json: @character, status: :created, location: @character
+      render json: {character: @character, status: 201, location: @character}
     else
       render json: @character.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class CharactersController < ApplicationController
   # PATCH/PUT /characters/1
   def update
     if @character.update(character_params)
-      render json: @character
+      render json: {character: @character, status: 204}
     else
       render json: @character.errors, status: :unprocessable_entity
     end
@@ -35,7 +35,11 @@ class CharactersController < ApplicationController
 
   # DELETE /characters/1
   def destroy
-    @character.destroy
+    if @character.destroy
+      render json: {message: "Deleted", character: @character}
+    else 
+      render json: {message: "Failed"}
+    end
   end
 
   private

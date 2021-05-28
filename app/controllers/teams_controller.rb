@@ -4,8 +4,8 @@ class TeamsController < ApplicationController
   # GET /teams
   def index
     @teams = Team.all
-
-    render json: @teams
+    
+    render json: @teams, include: [:characters]
   end
 
   # GET /teams/1
